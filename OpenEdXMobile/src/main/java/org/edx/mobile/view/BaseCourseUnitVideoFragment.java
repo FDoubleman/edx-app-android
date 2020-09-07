@@ -138,8 +138,10 @@ public abstract class BaseCourseUnitVideoFragment extends CourseUnitFragment
             }
         }
         // Only Allow handler to post the runnable when fragment is visible to user
-        if (getUserVisibleHint()) {
+        if (isVisible()) {
             subtitleDisplayHandler.postDelayed(this.subtitlesProcessorRunnable, SUBTITLES_DISPLAY_DELAY_MS);
+        } else {
+            updateClosedCaptionData(null);
         }
     };
 
