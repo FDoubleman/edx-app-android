@@ -234,7 +234,7 @@ public class CourseOutlineFragment extends OfflineSupportBaseFragment
             final FirebaseRemoteConfig firebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
             firebaseRemoteConfig.fetchAndActivate().addOnCompleteListener(task -> {
                 final String group = firebaseRemoteConfig.getString(Analytics.Keys.AA_EXPERIMENT);
-                if (!TextUtils.isEmpty(group)) {
+                if (!TextUtils.isEmpty(group) && environment.getLoginPrefs().getCurrentUserProfile() != null) {
                     final Map<String, String> values = new HashMap<>();
                     values.put(Analytics.Keys.EXPERIMENT, Analytics.Keys.AA_EXPERIMENT);
                     values.put(Analytics.Keys.GROUP, group);
