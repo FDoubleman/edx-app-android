@@ -219,8 +219,9 @@ public abstract class BaseCourseUnitVideoFragment extends CourseUnitFragment
             initTranscriptListView();
             updateTranscript(subtitlesObj);
             String subtitleLanguage = LocaleUtils.getCurrentDeviceLanguage(getActivity());
-            if (!android.text.TextUtils.isEmpty(subtitleLanguage) &&
-                    getTranscriptModel().entrySet().contains(subtitleLanguage)) {
+            if (loginPrefs.getSubtitleLanguage() == null &&
+                    !android.text.TextUtils.isEmpty(subtitleLanguage) &&
+                    getTranscriptModel().containsKey(subtitleLanguage)) {
                 loginPrefs.setSubtitleLanguage(subtitleLanguage);
             }
             showClosedCaptionData(subtitlesObj);
